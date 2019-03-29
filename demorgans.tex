@@ -1,0 +1,78 @@
+\documentclass{article}
+
+\usepackage{nd3}
+\usepackage[letterpaper,landscape,margin=0.5in]{geometry}
+\usepackage{multicol}
+\setlength{\columnsep}{1in}
+\setlength{\columnseprule}{0.5pt}
+\pagenumbering{gobble}
+
+\begin{document}
+
+\begin{multicols}{2}
+
+\begin{ND}[$\lnot (\lnot P \lor \lnot Q) \vdash P \lor Q$]
+    \ndl{1}{$\lnot P$}{A}
+    \ndl{1}{$\lnot P \lor \lnot Q$}{$\lor$I 1}
+    \ndl{}{$\lnot P \rightarrow \lnot P \lor \lnot Q$}{CP 1 2}
+    \ndl{4}{$\lnot Q$}{A}
+    \ndl{4}{$\lnot P \lor \lnot Q$}{$\lor$I 4}
+    \ndl{}{$\lnot P \rightarrow \lnot P \lor \lnot Q$}{CP 4 5}
+    \ndl{7}{$\lnot (\lnot P \lor \lnot Q)$}{A}
+    \ndl{7}{$\lnot \lnot P$}{MT 3 7}
+    \ndl{7}{$P$}{DN 8}
+    \ndl{7}{$\lnot \lnot Q$}{MT 6 7}
+    \ndl{7}{$Q$}{DN 10}
+    \ndl{7}{$P \land Q$}{$\land$I 9 11}
+\end{ND}
+
+\hrule
+
+\begin{ND}[$\lnot (P \lor Q) \vdash \lnot P \land \lnot Q$]
+  \ndl{1}{$P$}{A}
+  \ndl{1}{$P \lor Q$}{$\lor$I 1}
+  \ndl{}{$P \rightarrow P \lor Q$}{CP 1 2}
+  \ndl{4}{$Q$}{A}
+  \ndl{4}{$P \lor Q$}{$\lor$I 4}
+  \ndl{}{$Q \rightarrow P \lor Q$}{CP 4 5}
+  \ndl{7}{$\lnot (P \lor Q)$}{A}
+  \ndl{7}{$\lnot P$}{MT 3 7}
+  \ndl{7}{$\lnot Q$}{MT 6 7}
+  \ndl{7}{$\lnot P \land \lnot Q$}{$\land$I 8 9}
+\end{ND}
+
+\begin{ND}[$P \lor Q \vdash \lnot (\lnot P \land \lnot Q)$]
+  \ndl{1}{$\lnot P \land \lnot Q$}{A}
+  \ndl{1}{$\lnot P$}{$\land$E 1}
+  \ndl{ }{$\lnot P \land \lnot Q \rightarrow \lnot P$}{CP 1 2}
+  \ndl{1}{$\lnot Q$}{$\land$E 2}
+  \ndl{ }{$\lnot P \land \lnot Q \rightarrow \lnot Q$}{CP 1 4}
+  \ndl{6}{$P \lor Q$}{A}
+  \ndl{7}{$P$}{A}
+  \ndl{7}{$\lnot \lnot P$}{DN 7}
+  \ndl{7}{$\lnot (\lnot P \land \lnot Q)$}{MT 3 7}
+  \ndl{10}{$Q$}{A}
+  \ndl{10}{$\lnot \lnot Q$}{DN 10}
+  \ndl{10}{$\lnot (\lnot P \land \lnot Q)$}{MT 5 10}
+  \ndl{6}{$\lnot (\lnot P \land \lnot Q)$}{$\lor$E 6 7 9 10 12}
+\end{ND}
+
+\hrule
+
+\begin{ND}[$\lnot P \lor \lnot Q \vdash \lnot (P \land Q)$]
+  \ndl{1}{$P \land Q$}{A}
+  \ndl{1}{$P$}{$\land$E 1}
+  \ndl{}{$P \land Q \rightarrow P$}{CP 1 2}
+  \ndl{1}{$Q$}{$\land$E 1}
+  \ndl{}{$P \land Q \rightarrow Q$}{CP 1 4}
+  \ndl{6}{$\lnot P \lor \lnot Q$}{A}
+  \ndl{7}{$\lnot P$}{A}
+  \ndl{7}{$\lnot (P \land Q)$}{MT 3 7}
+  \ndl{8}{$\lnot Q$}{A}
+  \ndl{8}{$\lnot (P \land Q)$}{MT 3 9}
+  \ndl{6}{$\lnot (P \land Q)$}{$\lor$E 6 7 8 9 10}
+\end{ND}
+
+\end{multicols}
+
+\end{document}
